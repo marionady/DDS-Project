@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run untitled4.py
+web: sh setup.sh && streamlit run buston_pridiction.py
