@@ -1,7 +1,5 @@
-numpy>=1.9.2
-scipy>=0.15.1
-scikit-learn==0.22.1
-shap
-matplotlib>=1.4.3
-pandas>=0.19
-streamlit
+pandas<1.2.0
+xlrd<2.0
+streamlit==0.74.1
+plotly==4.14.3
+Pillow==8.1.2
