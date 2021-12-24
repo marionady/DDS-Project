@@ -8,6 +8,7 @@ Created on Fri Dec 24 00:48:06 2021
 import streamlit as st
 import pandas as pd
 import shap
+import numpy
 import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.ensemble import RandomForestRegressor
@@ -28,19 +29,19 @@ Y = pd.DataFrame(boston.target, columns=["MEDV"])
 st.sidebar.header('Specify Input Parameters')
 
 def user_input_features():
-    CRIM = st.sidebar.slider('Crime rate by town', X.CRIM.min(), X.CRIM.max(), X.CRIM.mean())
-    ZN = st.sidebar.slider('proporation of land zone', X.ZN.min(), X.ZN.max(), X.ZN.mean())
-    INDUS = st.sidebar.slider('non-retail business', X.INDUS.min(), X.INDUS.max(), X.INDUS.mean())
-    CHAS = st.sidebar.slider('CHAS', X.CHAS.min(), X.CHAS.max(), X.CHAS.mean())
-    NOX = st.sidebar.slider('nitric oxides concentration', X.NOX.min(), X.NOX.max(), X.NOX.mean())
-    RM = st.sidebar.slider(' average number of rooms per dwelling', X.RM.min(), X.RM.max(), X.RM.mean())
-    AGE = st.sidebar.slider('AGE', X.AGE.min(), X.AGE.max(), X.AGE.mean())
-    DIS = st.sidebar.slider('DIS', X.DIS.min(), X.DIS.max(), X.DIS.mean())
-    RAD = st.sidebar.slider('RAD', X.RAD.min(), X.RAD.max(), X.RAD.mean())
-    TAX = st.sidebar.slider('TAX', X.TAX.min(), X.TAX.max(), X.TAX.mean())
-    PTRATIO = st.sidebar.slider('PTRATIO', X.PTRATIO.min(), X.PTRATIO.max(), X.PTRATIO.mean())
-    B = st.sidebar.slider('B', X.B.min(), X.B.max(), X.B.mean())
-    LSTAT = st.sidebar.slider('LSTAT', X.LSTAT.min(), X.LSTAT.max(), X.LSTAT.mean())
+    CRIM = st.sidebar.slider('Crime rate by town',float( X.CRIM.min()),float( X.CRIM.max()),float( X.CRIM.mean()))
+    ZN = st.sidebar.slider('proporation of land zone',float( X.ZN.min()), float(X.ZN.max()),float( X.ZN.mean()))
+    INDUS = st.sidebar.slider('non-retail business', float(X.INDUS.min()),float( X.INDUS.max()), float(X.INDUS.mean()))
+    CHAS = st.sidebar.slider('CHAS',float( X.CHAS.min()), float(X.CHAS.max()), float(X.CHAS.mean()))
+    NOX = st.sidebar.slider('nitric oxides concentration', float(X.NOX.min()),float( X.NOX.max()),float( X.NOX.mean()))
+    RM = st.sidebar.slider(' average number of rooms per dwelling', float(X.RM.min()),float( X.RM.max()), float(X.RM.mean()))
+    AGE = st.sidebar.slider('AGE', float(X.AGE.min()), float(X.AGE.max()),float( X.AGE.mean()))
+    DIS = st.sidebar.slider('DIS', float(X.DIS.min()),float( X.DIS.max()),float( X.DIS.mean()))
+    RAD = st.sidebar.slider('RAD', float(X.RAD.min()),float( X.RAD.max()), float(X.RAD.mean()))
+    TAX = st.sidebar.slider('TAX',float( X.TAX.min()),float( X.TAX.max()), float(X.TAX.mean()))
+    PTRATIO = st.sidebar.slider('PTRATIO', float(X.PTRATIO.min()),float( X.PTRATIO.max()), float(X.PTRATIO.mean()))
+    B = st.sidebar.slider('B',float( X.B.min()), float(X.B.max()),float( X.B.mean()))
+    LSTAT = st.sidebar.slider('LSTAT',float( X.LSTAT.min()),float( X.LSTAT.max()),float( X.LSTAT.mean()))
     data = {'CRIM': CRIM,
             'ZN': ZN,
             'INDUS': INDUS,
